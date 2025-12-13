@@ -57,7 +57,7 @@ export default function Categories() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Categories</h2>
-        <button onClick={() => setShowModal(true)} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+        <button onClick={() => setShowModal(true)} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 cursor-pointer">
           Add Category
         </button>
       </div>
@@ -68,10 +68,10 @@ export default function Categories() {
             <h3 className="text-xl font-bold mb-2">{category.name}</h3>
             <p className="text-gray-600 text-sm mb-4">Slug: {category.slug}</p>
             <div className="flex gap-2">
-              <button onClick={() => handleEdit(category)} className="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+              <button onClick={() => handleEdit(category)} className="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer">
                 Edit
               </button>
-              <button onClick={() => handleDelete(category.id)} className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700">
+              <button onClick={() => handleDelete(category.id)} className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 cursor-pointer">
                 Delete
               </button>
             </div>
@@ -101,10 +101,10 @@ export default function Categories() {
                 required
               />
               <div className="flex gap-2">
-                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 cursor-pointer">
                   Save
                 </button>
-                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400">
+                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400 cursor-pointer">
                   Cancel
                 </button>
               </div>

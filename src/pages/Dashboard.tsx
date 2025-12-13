@@ -7,6 +7,7 @@ import Inventory from './Inventory';
 import Suppliers from './Suppliers';
 import Purchases from './Purchases';
 import Sales from './Sales';
+import NotificationBox from '../components/NotificationBox';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -25,12 +26,13 @@ export default function Dashboard() {
           <div className="flex justify-between h-16 items-center">
             <h1 className="text-2xl font-bold text-gray-800">Inventory Dashboard</h1>
             <div className="flex items-center gap-4">
+              <NotificationBox />
               <span className="text-gray-600">
                 {user?.firstName} {user?.lastName}
               </span>
               <button
                 onClick={handleLogout}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition cursor-pointer"
               >
                 Logout
               </button>

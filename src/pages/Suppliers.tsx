@@ -59,7 +59,7 @@ export default function Suppliers() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Suppliers</h2>
-        <button onClick={() => setShowModal(true)} className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
+        <button onClick={() => setShowModal(true)} className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 cursor-pointer">
           Add Supplier
         </button>
       </div>
@@ -85,7 +85,7 @@ export default function Suppliers() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm">{supplier.phone}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">{supplier.email}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <button onClick={() => handleEdit(supplier)} className="text-blue-600 hover:text-blue-800">Edit</button>
+                  <button onClick={() => handleEdit(supplier)} className="text-blue-600 hover:text-blue-800 cursor-pointer">Edit</button>
                 </td>
               </tr>
             ))}
@@ -111,8 +111,8 @@ export default function Suppliers() {
               <textarea placeholder="Address" value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} 
                 className="w-full px-3 py-2 border rounded-lg" rows={3} required />
               <div className="flex gap-2">
-                <button type="submit" className="flex-1 bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700">Save</button>
-                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400">Cancel</button>
+                <button type="submit" className="flex-1 bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 cursor-pointer">Save</button>
+                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400 cursor-pointer">Cancel</button>
               </div>
             </form>
           </div>

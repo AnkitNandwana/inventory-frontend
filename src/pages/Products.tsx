@@ -74,7 +74,7 @@ export default function Products() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Products</h2>
-        <button onClick={() => setShowModal(true)} className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+        <button onClick={() => setShowModal(true)} className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer">
           Add Product
         </button>
       </div>
@@ -102,8 +102,8 @@ export default function Products() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm">${product.sellingPrice}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">{product.currentStock}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm space-x-2">
-                  <button onClick={() => handleEdit(product)} className="text-blue-600 hover:text-blue-800">Edit</button>
-                  <button onClick={() => handleDelete(product.id)} className="text-red-600 hover:text-red-800">Delete</button>
+                  <button onClick={() => handleEdit(product)} className="text-blue-600 hover:text-blue-800 cursor-pointer">Edit</button>
+                  <button onClick={() => handleDelete(product.id)} className="text-red-600 hover:text-red-800 cursor-pointer">Delete</button>
                 </td>
               </tr>
             ))}
@@ -134,8 +134,8 @@ export default function Products() {
               <input type="number" placeholder="Low Stock Threshold" value={formData.lowStockThreshold} 
                 onChange={(e) => setFormData({...formData, lowStockThreshold: e.target.value})} className="w-full px-3 py-2 border rounded-lg" required />
               <div className="flex gap-2">
-                <button type="submit" className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Save</button>
-                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400">Cancel</button>
+                <button type="submit" className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 cursor-pointer">Save</button>
+                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400 cursor-pointer">Cancel</button>
               </div>
             </form>
           </div>

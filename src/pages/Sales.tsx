@@ -69,7 +69,7 @@ export default function Sales() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Sales</h2>
-        <button onClick={() => setShowModal(true)} className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700">
+        <button onClick={() => setShowModal(true)} className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 cursor-pointer">
           Create Sale
         </button>
       </div>
@@ -128,7 +128,7 @@ export default function Sales() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <label className="font-semibold">Items</label>
-                  <button type="button" onClick={addItem} className="bg-green-600 text-white px-3 py-1 rounded text-sm">
+                  <button type="button" onClick={addItem} className="bg-green-600 text-white px-3 py-1 rounded text-sm cursor-pointer">
                     Add Item
                   </button>
                 </div>
@@ -153,8 +153,8 @@ export default function Sales() {
               </div>
               
               <div className="flex gap-2">
-                <button type="submit" className="flex-1 bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700">Create</button>
-                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400">Cancel</button>
+                <button type="submit" className="flex-1 bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 cursor-pointer">Create</button>
+                <button type="button" onClick={resetForm} className="flex-1 bg-gray-300 py-2 rounded-lg hover:bg-gray-400 cursor-pointer">Cancel</button>
               </div>
             </form>
           </div>
