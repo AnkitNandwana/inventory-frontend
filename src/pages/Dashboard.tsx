@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useWebSocket } from '../hooks/useWebSocket';
 import Products from './Products';
 import Categories from './Categories';
 import Inventory from './Inventory';
@@ -8,11 +9,13 @@ import Suppliers from './Suppliers';
 import Purchases from './Purchases';
 import Sales from './Sales';
 import NotificationBox from '../components/NotificationBox';
+import Notification from './Notification';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('home');
+  const webSocketData = useWebSocket();
 
   const handleLogout = async () => {
     await logout();
@@ -72,6 +75,10 @@ export default function Dashboard() {
               className={`w-full text-left px-4 py-3 rounded-lg cursor-pointer ${activeTab === 'sales' ? 'bg-teal-600 text-white' : 'hover:bg-gray-100'}`}>
               Sales
             </button>
+            <button onClick={() => setActiveTab('notification')} 
+              className={`w-full text-left px-4 py-3 rounded-lg cursor-pointer ${activeTab === 'notification' ? 'bg-yellow-600 text-white' : 'hover:bg-gray-100'}`}>
+              Notification
+            </button>
           </nav>
         </aside>
 
@@ -101,6 +108,7 @@ export default function Dashboard() {
           {activeTab === 'suppliers' && <Suppliers />}
           {activeTab === 'purchases' && <Purchases />}
           {activeTab === 'sales' && <Sales />}
+          {activeTab === 'notification' && <Notification webSocketData={webSocketData} />}
         </main>
       </div>
     </div>
