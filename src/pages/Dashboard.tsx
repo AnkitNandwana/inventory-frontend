@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useWebSocket } from '../hooks/useWebSocket';
+import { usePurchaseWebSocket } from '../hooks/usePurchaseWebSocket';
 import Products from './Products';
 import Categories from './Categories';
 import Inventory from './Inventory';
@@ -10,12 +11,14 @@ import Purchases from './Purchases';
 import Sales from './Sales';
 import NotificationBox from '../components/NotificationBox';
 import Notification from './Notification';
+import PurchaseSuggestions from './PurchaseSuggestions';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('home');
   const webSocketData = useWebSocket();
+  const purchaseData = usePurchaseWebSocket();
 
   const handleLogout = async () => {
     await logout();
@@ -75,6 +78,10 @@ export default function Dashboard() {
               className={`w-full text-left px-4 py-3 rounded-lg cursor-pointer ${activeTab === 'sales' ? 'bg-teal-600 text-white' : 'hover:bg-gray-100'}`}>
               Sales
             </button>
+            <button onClick={() => setActiveTab('purchase-suggestions')} 
+              className={`w-full text-left px-4 py-3 rounded-lg cursor-pointer ${activeTab === 'purchase-suggestions' ? 'bg-cyan-600 text-white' : 'hover:bg-gray-100'}`}>
+              Purchase Suggestions
+            </button>
             <button onClick={() => setActiveTab('notification')} 
               className={`w-full text-left px-4 py-3 rounded-lg cursor-pointer ${activeTab === 'notification' ? 'bg-yellow-600 text-white' : 'hover:bg-gray-100'}`}>
               Notification
@@ -108,6 +115,7 @@ export default function Dashboard() {
           {activeTab === 'suppliers' && <Suppliers />}
           {activeTab === 'purchases' && <Purchases />}
           {activeTab === 'sales' && <Sales />}
+          {activeTab === 'purchase-suggestions' && <PurchaseSuggestions purchaseData={purchaseData} />}
           {activeTab === 'notification' && <Notification webSocketData={webSocketData} />}
         </main>
       </div>

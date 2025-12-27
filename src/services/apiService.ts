@@ -104,3 +104,56 @@ export const salesService = {
     `mutation { updateSale(id: ${id}, input: { status: "${status}" }) { id status } }`
   )
 };
+
+export const purchaseSuggestionService = {
+  getPending: (page = 1, limit = 10) => {
+    const query = `query GetPurchaseSuggestions($status: String, $page: Int, $limit: Int, $productId: Int, $supplierId: Int) {
+      purchaseSuggestions(status: $status, page: $page, limit: $limit, productId: $productId, supplierId: $supplierId) {
+        suggestions {
+          id
+          product { name sku }
+          supplier { name }
+          suggestedQty
+          unitCost
+          totalCost
+          reason
+          status
+          createdAt
+        }
+        totalCount
+        page
+        limit
+        hasNext
+        hasPrevious
+      }
+    }`;
+    return api.post('/graphql/', {
+      query,
+      variables: { status: "PENDING", page, limit, productId: null, supplierId: null }
+    }).then(response => response.data.data);
+  },
+  approve: (suggestionId: number, userId: number) => {
+    const query = `mutation ApprovePurchaseSuggestion($suggestionId: Int!, $userId: Int) {
+      approvePurchaseSuggestion(suggestionId: $suggestionId, userId: $userId) {
+        id
+        supplier { name }
+        totalAmount
+        status
+        createdAt
+      }
+    }`;
+    return api.post('/graphql/', {
+      query,
+      variables: { suggestionId: parseInt(suggestionId.toString()), userId: parseInt(userId.toString()) }
+    }).then(response => response.data.data);
+  },
+  reject: (suggestionId: number, userId: number) => {
+    const query = `mutation RejectPurchaseSuggestion($suggestionId: Int!, $userId: Int) {
+      rejectPurchaseSuggestion(suggestionId: $suggestionId, userId: $userId)
+    }`;
+    return api.post('/graphql/', {
+      query,
+      variables: { suggestionId: parseInt(suggestionId.toString()), userId: parseInt(userId.toString()) }
+    }).then(response => response.data.data);
+  }
+};
